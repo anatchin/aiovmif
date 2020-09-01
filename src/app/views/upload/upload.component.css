@@ -1,0 +1,38 @@
+.uploadfilecontainer {
+  background-image: url("../../../assets/img/dnd/ic-upload-file.svg");
+  background-repeat: no-repeat;
+  background-size: 90px;
+  background-position: center;
+  height: 200px;
+  width: 80%;
+  margin: 20px auto;
+  border: 2px dashed #141414;
+  border-radius: 5px;
+}
+
+.uploadfilecontainer:hover {
+  cursor: pointer;
+  background-color: #c5c5c5 !important;
+  opacity: 0.8;
+}
+
+.files-list {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 10px auto;
+  background: #ffffff;
+  border: 1px dashed;
+  border-radius: 5px;
+  padding: 5px;
+  color: #141414;
+}
+
+.files-list .delete-file {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.files-list .delete-file img{
+  width:30px;
+}

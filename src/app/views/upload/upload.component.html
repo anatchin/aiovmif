@@ -1,0 +1,80 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      ส่งตรวจภาพ
+    </div>
+    <div class="card-body">
+
+      <!-- form -->
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">รหัสตลับ:</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">ชื่อ-สกุล:</label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">อายุ:</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">สัญชาติ:</label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="comment">หมายเหตุ:</label>
+          <textarea style="resize: none;" class="form-control" rows="5" id="comment"></textarea>
+        </div>
+      </form>
+
+      <!-- Upload -->
+      <div class="uploadfilecontainer" [hidden]="albums.length > 0" (click)="fileInput.click()" appDragDrop (onFileDropped)="onFileChange($event)">
+        <input hidden type="file" multiple="multiple" #fileInput (change)="onFileChange($event)">
+      </div>
+      <div style="text-align: center;"  [hidden]="albums.length > 0 && theFiles?.length > 0">
+        <h4>เลือกไฟล์เพื่ออับโหลด</h4>
+      </div>
+      <div style="text-align: center;" *ngIf="theFiles?.length > 0" [hidden]="albums.length > 0">
+        <h4>อัพโหลด {{theFiles.length}} ไฟล์</h4>
+      </div>
+      <div class="text-center">
+        <div class="spinner-border text-success" role="status" [hidden]="!loading"></div>
+        <p><strong class="text-success" [hidden]="!loading">Loading...</strong></p>
+      </div>
+      <!-- <div class="files-list" *ngFor="let file of theFiles;let i=index">
+        <p>{{ file }}</p>
+        <button class="delete-file" (click)="deleteAttachment(i)">
+          <img src="../../assets/Recycle_Bin_Full.png">
+        </button>
+      </div> -->
+      <div class="content" *ngIf="imgs.length > 0">
+        <div class="row">
+          <div class="col-md-3" *ngFor="let img of imgs; let i=index">
+            <div class="card" (click)="open(i)">
+              <div class="card-body">
+                <img [src]="img.fileAsBase64" class="img-fluid" />
+              </div>
+              <div class="card-footer">
+                <p>{{img.fileName}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center" *ngIf="theFiles?.length > 0" [hidden]="albums.length > 0">
+        <button type="button" class="btn btn-danger ml-2">ยกเลิก</button>
+        <button type="button" class="btn btn-primary" (click)="uploadFile()">ส่งตรวจ</button>
+      </div>
+      <div class="text-center" [hidden]="albums.length <= 0">
+        <button type="button" class="btn btn-danger ml-2">ยกเลิก</button>
+        <button type="button" class="btn btn-primary" (click)="onSave()">บันทึกข้อมูล</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card mx-4">
+            <div class="card-body p-4">
+              <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <h1>ลงทะเบียน</h1>
+                <p class="text-muted">ลงทะเบียนเพื่อสร้างบัญชีเข้าใช้งาน</p>
+
+                <!-- Fullname -->
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                  </div>
+                  <input type="text" [(ngModel)]="form.fullname" name="fullname" formControlName="fullname" class="form-control" placeholder="ชื่อ-สกุล" required
+                    [ngClass]="{ 'is-invalid': submitted && f.fullname.errors }">
+                  <div *ngIf="submitted && f.fullname.errors" class="invalid-feedback">
+                    <div *ngIf="f.fullname.errors.required">โปรดระบุชื่อ-สกุล</div>
+                  </div>
+                </div>
+
+                <!-- Department -->
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-home"></i></span>
+                  </div>
+                  <input type="text" [(ngModel)]="form.department" name="department" formControlName="department" class="form-control" placeholder="สังกัด/หน่วยงาน"
+                    required [ngClass]="{ 'is-invalid': submitted && f.department.errors }">
+                  <div *ngIf="submitted && f.department.errors" class="invalid-feedback">
+                    <div *ngIf="f.department.errors.required">โปรดระบุหน่วยงาน/สังกัด</div>
+                  </div>
+                </div>
+
+                <!-- Username -->
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user-follow"></i></span>
+                  </div>
+                  <input type="text" [(ngModel)]="form.username" name="username" formControlName="username" class="form-control" placeholder="ชื่อผู้ใช้" required
+                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                  <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">โปรดระบุชื่อผู้ใช้</div>
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                  </div>
+                  <input type="text" [(ngModel)]="form.email" name="email" formControlName="email" class="form-control" placeholder="อีเมล์" required
+                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                  <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">โปรดระบุที่อยุ่อีเมล์</div>
+                  </div>
+                </div>
+                
+                <!-- Password -->
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-lock"></i></span>
+                  </div>
+                  <input type="password" [(ngModel)]="form.password" name="password" formControlName="password" class="form-control" placeholder="รหัสผ่าน" required
+                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">โปรดระบุรหัสผ่าน</div>
+                  </div>
+                </div>
+                <div>
+                  <button type="submit" class="btn btn-block btn-success">ลงทะเบียน</button>
+                </div>
+                <div class="pt-2">
+                  <button type="button" [routerLink]="['/login']" class="btn btn-block btn-primary">เข้าสู่ระบบ</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
